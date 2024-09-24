@@ -12,18 +12,22 @@ type user struct {
 	createdAt time.Time
 }
 
+func newUser(firstName, lastName, birthday string) user {
+	return user{
+		firstName: firstName,
+		lastName:  lastName,
+		birthDay:  birthday,
+		createdAt: time.Now(),
+	}
+}
+
 func main() {
 	firstName := "Rana"
 	lastName := "Dawar"
 	birthDate := "2 December 1999"
 
 	var appUser user
-	appUser = user{
-		firstName: firstName,
-		lastName:  lastName,
-		birthDay:  birthDate,
-		createdAt: time.Now(),
-	}
+	appUser = newUser(firstName, lastName, birthDate)
 	appUser.outPutUserDetails()
 	appUser.updateUserName()
 	appUser.outPutUserDetails()
