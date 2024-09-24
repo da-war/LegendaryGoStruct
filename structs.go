@@ -24,14 +24,22 @@ func main() {
 		birthDay:  birthDate,
 		createdAt: time.Now(),
 	}
+	appUser.outPutUserDetails()
 
-	outPutUserDetails(&appUser)
+	var myUser user
+	myUser = user{
+		firstName: "daar",
+		lastName:  "ka",
+		birthDay:  "mahool",
+	}
+
+	myUser.outPutUserDetails()
 
 }
 
-func outPutUserDetails(myStruct *user) {
-	userO := *myStruct
-	fmt.Println("heheh", userO)
+func (myStruct user) outPutUserDetails() {
+
+	fmt.Println("Touba", myStruct)
 }
 
 func getUserData(str string) string {
