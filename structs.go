@@ -25,21 +25,28 @@ func main() {
 		createdAt: time.Now(),
 	}
 	appUser.outPutUserDetails()
+	appUser.updateUserName()
+	appUser.outPutUserDetails()
 
-	var myUser user
-	myUser = user{
-		firstName: "daar",
-		lastName:  "ka",
-		birthDay:  "mahool",
-	}
+	// var myUser user
+	// myUser = user{
+	// 	firstName: "daar",
+	// 	lastName:  "ka",
+	// 	birthDay:  "mahool",
+	// }
 
-	myUser.outPutUserDetails()
+	// myUser.outPutUserDetails()
 
 }
 
 func (myStruct user) outPutUserDetails() {
 
 	fmt.Println("Touba", myStruct)
+}
+
+func (myStruct *user) updateUserName() {
+	myStruct.firstName = "Dawarrr"
+	myStruct.lastName = "Abdullahh"
 }
 
 func getUserData(str string) string {
