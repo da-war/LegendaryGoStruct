@@ -15,25 +15,23 @@ type user struct {
 func main() {
 	firstName := "Rana"
 	lastName := "Dawar"
-	// birthDate := getUserData("Please Enter your Date of birth")
+	birthDate := "2 December 1999"
 
 	var appUser user
 	appUser = user{
 		firstName: firstName,
 		lastName:  lastName,
-		// birthDay:birthDate,
+		birthDay:  birthDate,
 		createdAt: time.Now(),
 	}
 
-	fmt.Println(appUser)
-	if appUser.birthDay == "" {
-		fmt.Println("Helllosh")
-	}
+	outPutUserDetails(&appUser)
 
 }
 
-func outPutUserDetails() {
-	fmt.Println("")
+func outPutUserDetails(myStruct *user) {
+	userO := *myStruct
+	fmt.Println("heheh", userO)
 }
 
 func getUserData(str string) string {
