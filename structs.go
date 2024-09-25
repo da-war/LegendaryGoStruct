@@ -7,12 +7,14 @@ import (
 )
 
 func main() {
-	firstName := ""
+	firstName := "dawar"
 	lastName := "Dawar"
 	birthDate := "2 December 1999"
-
 	var appUser *user.User
-	appUser, err := user.NewUser(firstName, lastName, birthDate)
+	appUser, err := user.New(firstName, lastName, birthDate)
+	appAdmin, err := user.NewAdmin("dawar@gmail.com", "Dawar@123", firstName, lastName, birthDate)
+
+	newAdmin, err := user.MakeUserAdmin("emailcom", "dawar123", appUser)
 
 	fmt.Println("BirthDay:", appUser)
 	if err != nil {
@@ -20,7 +22,10 @@ func main() {
 		return
 	}
 	appUser.OutPutUserDetails()
-	appUser.UpdateUserName()
-	appUser.OutPutUserDetails()
+	appAdmin.OutPutAdmin()
+	newAdmin.OutPutAdmin()
+
+	// appUser.UpdateUserName()
+	// appUser.OutPutUserDetails()
 
 }

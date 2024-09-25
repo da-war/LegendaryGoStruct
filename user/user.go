@@ -13,6 +13,60 @@ type User struct {
 	createdAt time.Time
 }
 
+type Admin struct {
+	email     string
+	password  string
+	user      User
+	createdAt time.Time
+}
+
+// func NewAdmin(email, password string) (Admin, error) {
+// 	if email == "" || password == "" {
+// 		return nil, errors.New("Email and Password are required")
+// 	}
+
+// 	return Admin{
+// 		email,
+// 		password,
+// 		user: User{
+// 			firstName: "Dawar",
+// 			lastName:  "Filana",
+// 			birthDate: "Dimkana",
+// 			createdAt: time.Now(),
+// 		},
+// 	}, nil
+
+// }
+func NewAdmin(email, password, firstName, lastName, birthDate string) (*Admin, error) {
+	if email == "" || password == "" {
+		return nil, errors.New("Email and Password are required")
+	}
+	user, err := New(firstName, lastName, birthDate)
+	if err != nil {
+		return nil, err
+	}
+	return &Admin{
+		email:     email,
+		password:  password,
+		user:      *user,
+		createdAt: time.Now(),
+	}, nil
+}
+
+func MakeUserAdmin(email string, password string, user *User) (*Admin, error) {
+	if email == "" || password == "" {
+		return nil, errors.New("Email and Password are required")
+	}
+	hello := time.Now()
+	return &Admin{
+			email,
+			password,
+			*user,
+			hello,
+		},
+		nil
+}
+
 func New(firstName, lastName, birthDate string) (*User, error) {
 	if firstName == "" || lastName == "" || birthDate == "" {
 		return nil, errors.New("First Name, LastName and birthDate is required")
@@ -28,6 +82,9 @@ func New(firstName, lastName, birthDate string) (*User, error) {
 
 func (myStruct User) OutPutUserDetails() {
 
+	fmt.Println("Touba", myStruct)
+}
+func (myStruct Admin) OutPutAdmin() {
 	fmt.Println("Touba", myStruct)
 }
 
