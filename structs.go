@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	firstName := "Rana "
+	firstName := ""
 	lastName := "Dawar"
 	birthDate := "2 December 1999"
 
