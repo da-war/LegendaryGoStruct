@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"time"
 )
@@ -12,22 +13,29 @@ type user struct {
 	createdAt time.Time
 }
 
-func newUser(firstName, lastName, birthday string) user {
-	return user{
+func newUser(firstName, lastName, birthday string) (*user, error) {
+	if firstName == "" || lastName == "" || birthday == "" {
+		return nil, errors.New("First Name, LastName and birthDate is required")
+	}
+	return &user{
 		firstName: firstName,
 		lastName:  lastName,
 		birthDay:  birthday,
 		createdAt: time.Now(),
-	}
+	}, nil
 }
 
 func main() {
-	firstName := "Rana"
+	firstName := "Rana "
 	lastName := "Dawar"
 	birthDate := "2 December 1999"
 
-	var appUser user
-	appUser = newUser(firstName, lastName, birthDate)
+	var appUser *user
+	appUser, err := newUser(firstName, lastName, birthDate)
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
 	appUser.outPutUserDetails()
 	appUser.updateUserName()
 	appUser.outPutUserDetails()
